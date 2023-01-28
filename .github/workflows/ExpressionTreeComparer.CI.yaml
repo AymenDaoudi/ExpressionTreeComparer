@@ -27,8 +27,8 @@ jobs:
     #     key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
     #     restore-keys: |
     #                 ${{ runner.os }}-nuget
-    - name: Display dotnet version
-        run: dotnet --version
+    # - name: Display dotnet version
+    #     run: dotnet --version
     - name: Install dependencies
       run: dotnet restore ExpressionTreeComparer.csproj
     - name: Build
