@@ -45,8 +45,8 @@ jobs:
     - name: Build
       run: dotnet build $PROJECT_PATH/$PROJECT_NAME.csproj --configuration Release --no-restore --verbosity normal
 
-    # - name: "Unit Test"
-    #   run: dotnet test $UNIT_TEST_PROJECT_PATH/$UNIT_TEST_PROJECT_NAME.csproj Release --no-restore --verbosity normal
+    - name: "Unit Test"
+      run: dotnet test $UNIT_TEST_PROJECT_PATH/$UNIT_TEST_PROJECT_NAME.csproj --configuration Release --no-restore --verbosity normal
 
     - name: "Integration Test"
-      run: dotnet test $INTEG_TEST_PROJECT_PATH/$INTEG_TEST_PROJECT_NAME.csproj Release --no-restore --verbosity normal
+      run: dotnet test $INTEG_TEST_PROJECT_PATH/$INTEG_TEST_PROJECT_NAME.csproj --configuration Release --no-restore --verbosity normal
