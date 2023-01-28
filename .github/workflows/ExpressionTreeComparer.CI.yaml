@@ -10,7 +10,7 @@ on:
     branches: 
       - main
       - feature/*
-
+  workflow_dispatch:
 env:
   # folder containing the project to build.
   PROJECT_PATH: src/ExpressionTreeComparer
