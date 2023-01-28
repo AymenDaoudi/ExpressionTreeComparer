@@ -6,14 +6,10 @@ on:
     branches: 
       - main
       - feature/*
-    paths: 
-      - ./**
   pull_request:
     branches: 
       - main
       - feature/*
-    paths: 
-      - ./**
 
 env:
   # folder containing the project to build.
