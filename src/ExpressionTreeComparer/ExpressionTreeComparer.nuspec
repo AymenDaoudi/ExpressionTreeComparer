@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>ExpressionTreeComparer</id>
+    <version>$version$</version>
+    <title>ExpressionTreeComparer</title>
+    <authors>AymenDaoudi</authors>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/AymenDaoudi/ExpressionTreeComparer</projectUrl>
+    <!--<iconUrl>http://icon_url_here_or_delete_this_line/</iconUrl>-->
+    <description>A tool that compares two expression trees to check if they are equivalent.</description>
+    <releaseNotes>First release.</releaseNotes>
+    <copyright>Copyright 2023</copyright>
+    <tags>ExpressionTree Csharp</tags>
+    <dependencies>
+      <group targetFramework="netstandard2.1">
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\Release\netstandard2.1\*.dll" target="lib\netstandard2.1" />
+    <file src="bin\Release\netstandard2.1\ExpressionTreeComparer.pdb" target="lib\netstandard2.1" />
+    <file src="bin\Release\netstandard2.1\ExpressionTreeComparer.deps.json" target="lib\netstandard2.1" />
+  </files>
+</package>

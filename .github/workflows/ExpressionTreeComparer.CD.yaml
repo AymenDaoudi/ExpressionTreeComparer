@@ -1,0 +1,44 @@
+name: ExpressionTreeComparer.CD
+run-name: ExpressionTreeComparer.CD
+
+on:
+  workflow_run:
+    workflows: ["ExpressionTreeComparer.CI"]
+    branches: [main]
+    types:
+      - completed
+  workflow_dispatch:
+
+env:
+  # folder containing the project to build.
+  PROJECT_PATH: src/ExpressionTreeComparer
+  # name of the csproj file to build (including extension)
+  PROJECT_FILE_NAME: ExpressionTreeComparer.csproj
+  # name of the csproj file to build (without extension)
+  PROJECT_NAME: ExpressionTreeComparer
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
+    steps:
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '7.x.x'
+
+    - name: Install dependencies
+      run: dotnet restore $PROJECT_PATH/$PROJECT_NAME.csproj
+
+    - name: Build
+      run: dotnet build $PROJECT_PATH/$PROJECT_NAME.csproj --configuration Release --no-restore --verbosity normal
+
+    - name: Pack
+      run: dotnet pack $PROJECT_PATH/$PROJECT_NAME.csproj -p:NuspecFile=$PROJECT_NAME.nuspec -p:NuspecProperties="version=0.1.0" --configuration Release --include-symbols --no-build --no-restore --output .
+    
+    - name: PushNuget
+      run: dotnet nuget push *.nupkg --source Nuget.org --api-key ${{secrets.PUBLISH_TO_NUGET_ORG}} --skip-duplicate
