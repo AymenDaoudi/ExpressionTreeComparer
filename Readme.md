@@ -22,6 +22,7 @@ The types of nodes that are supported:
 - Properties
 - Binary operators
 - Unary operators
+- Literals
 
 ExpressionTreeComparer supports `Func`s and `Action`s with any number of parameters.
 
@@ -68,10 +69,7 @@ This code simply won't compile, as the two expressions need to have the same del
 Expression<Func<Person, string>> expression1 = p => p.Name;
 Expression<Func<Person, bool>> expression2 = person => person.IsDisactivated;
 
-var result = expression1.IsEquivalentTo(expression2);
 ```
-
-result shows `False`.
 
 # Download
 
